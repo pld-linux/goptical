@@ -1,0 +1,14 @@
+--- goptical-0.90/doc/texinfo/goptical.texi.orig	2011-11-09 20:52:20.000000000 +0100
++++ goptical-0.90/doc/texinfo/goptical.texi	2011-11-15 17:44:30.037392226 +0100
+@@ -18,9 +18,9 @@
+ @end copying
+ 
+ @ifnottex
+-@dircategory Scientific software
++@dircategory Libraries:
+ @direntry
+-* goptical:                   GNU Optical design and simulation library
++* goptical:				GNU Optical design and simulation library
+ @end direntry
+ @end ifnottex
+ 
