@@ -1,4 +1,4 @@
-# TODO: dime (DXF renderer), plplot (renderer)
+# TODO: plplot (renderer)
 #
 # Conditional build:
 %bcond_without	static_libs	# static libraries
@@ -14,12 +14,15 @@ Source0:	https://ftp.gnu.org/gnu/goptical/%{name}-%{version}.tar.gz
 # Source0-md5:	a65d1dc6af36d481ef8ea34a0ccd9823
 Patch0:		%{name}-includes.patch
 Patch1:		%{name}-info.patch
+Patch2:		%{name}-as-needed.patch
+Patch3:		%{name}-link.patch
 URL:		http://gnu.org/software/goptical/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	OpenGL-glut-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	dime-devel >= 0.9.1-6
 BuildRequires:	gd-devel
 BuildRequires:	gsl-devel
 BuildRequires:	libstdc++-devel
@@ -81,6 +84,8 @@ Statyczne biblioteki Goptical.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}

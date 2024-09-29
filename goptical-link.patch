@@ -1,0 +1,38 @@
+--- goptical-1.0/goptical_core/src/Makefile.am.orig	2011-11-09 20:52:18.000000000 +0100
++++ goptical-1.0/goptical_core/src/Makefile.am	2024-09-29 18:27:21.188130923 +0200
+@@ -16,6 +16,7 @@
+ SUBDIRS = Goptical
+ 
+ lib_LTLIBRARIES = libgoptical.la
++libgoptical_la_LIBADD = -lgsl
+ 
+ libgoptical_la_SOURCES = curve_array.cc curve_base.cc curve_composer.cc      \
+ 	curve_conic_base.cc curve_conic.cc curve_flat.cc                \
+@@ -46,22 +47,27 @@ libgoptical_la_SOURCES = curve_array.cc
+ 
+ if GOPTICAL_HAVE_DIME
+ libgoptical_la_SOURCES += io_renderer_dxf.cc
++libgoptical_la_LIBADD += -ldime
+ endif
+ 
+ if GOPTICAL_HAVE_GD
+ libgoptical_la_SOURCES += io_renderer_gd.cc
++libgoptical_la_LIBADD += -lgd
+ endif
+ 
+ if GOPTICAL_HAVE_GL
+ libgoptical_la_SOURCES += io_renderer_opengl.cc
++libgoptical_la_LIBADD += -lGLU -lGL
+ endif
+ 
+ if GOPTICAL_HAVE_X11
+ libgoptical_la_SOURCES += io_renderer_x11.cc
++libgoptical_la_LIBADD += -lX11
+ endif
+ 
+ if GOPTICAL_HAVE_PLPLOT
+ libgoptical_la_SOURCES += io_renderer_plplot.cc
++libgoptical_la_LIBADD += -lplplotcxx -lplplot
+ endif
+ 
+ libgoptical_la_CPPFLAGS = -I$(top_srcdir)/include
