@@ -1,0 +1,22 @@
+--- goptical-1.0/goptical_core/tests/test_2d_plot.cc.orig	2024-09-29 12:13:34.806291711 +0200
++++ goptical-1.0/goptical_core/tests/test_2d_plot.cc	2024-09-29 12:13:38.442938676 +0200
+@@ -24,6 +24,8 @@
+ 
+ #include "config.hh"
+ 
++#include <unistd.h>
++
+ #include <Goptical/Io/Renderer>
+ #include <Goptical/Io/RendererViewport>
+ #include <Goptical/Io/RendererAxes>
+--- goptical-1.0/goptical_core/tests/test_rendering.cc.orig	2011-11-09 20:52:18.000000000 +0100
++++ goptical-1.0/goptical_core/tests/test_rendering.cc	2024-09-29 12:13:53.589523286 +0200
+@@ -24,6 +24,8 @@
+ 
+ #include "config.hh"
+ 
++#include <unistd.h>
++
+ #include <Goptical/Io/Renderer>
+ #include <Goptical/Io/RendererViewport>
+ #include <Goptical/Io/Rgb>

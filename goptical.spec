@@ -1,21 +1,22 @@
 # TODO: dime (DXF renderer), plplot (renderer)
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static libraries
+%bcond_without	static_libs	# static libraries
 #
 Summary:	GNU Optical design and simulation library
 Summary(pl.UTF-8):	Biblioteka do projektowania i symulacji optycznych GNU Optical
 Name:		goptical
-Version:	0.90
-Release:	0.1
+Version:	1.0
+Release:	1
 License:	GPL v3+
 Group:		Libraries
-Source0:	http://alpha.gnu.org/gnu/goptical/%{name}-%{version}.tar.gz
-# Source0-md5:	ad3c85d16815ee8673908780ec287763
-Patch0:		%{name}-sh.patch
+Source0:	https://ftp.gnu.org/gnu/goptical/%{name}-%{version}.tar.gz
+# Source0-md5:	a65d1dc6af36d481ef8ea34a0ccd9823
+Patch0:		%{name}-includes.patch
 Patch1:		%{name}-info.patch
 URL:		http://gnu.org/software/goptical/
 BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	OpenGL-devel
 BuildRequires:	OpenGL-glut-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -23,6 +24,7 @@ BuildRequires:	gd-devel
 BuildRequires:	gsl-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	rpmbuild(macros) >= 1.749
 BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -97,6 +99,10 @@ cd ../goptical_design
 %{__autoconf}
 %{__automake}
 cd ..
+%if "%{_ver_ge %{cxx_version} 7.0}" == "1"
+# code is not ready for C++17
+CXXFLAGS="%{rpmcxxflags} -std=gnu++14"
+%endif
 %configure \
 	%{?with_static_libs:--enable-static}
 %{__make}
