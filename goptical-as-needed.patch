@@ -1,20 +1,26 @@
 --- goptical-1.0/goptical_core/configure.ac.orig	2011-11-30 12:03:53.000000000 +0100
-+++ goptical-1.0/goptical_core/configure.ac	2024-09-29 14:49:09.392388584 +0200
-@@ -44,7 +44,7 @@ fi
++++ goptical-1.0/goptical_core/configure.ac	2024-09-29 19:29:04.924732727 +0200
+@@ -43,19 +43,20 @@ fi
+ 
  # c++ library checking macro
  AC_DEFUN([AT_CHECK_CPPLIB], [
-   SAVED_LDFLAGS=$LDFLAGS
+-  SAVED_LDFLAGS=$LDFLAGS
 -  LDFLAGS="$LDFLAGS $1"
++  SAVED_LIBS=$LIBS
 +  LIBS="$LIBS $1"
    AC_MSG_CHECKING([$1 C++ library availability])
    AC_LINK_IFELSE(
      [AC_LANG_PROGRAM([#include <$2>], [$3])],
-@@ -55,7 +55,7 @@ AC_DEFUN([AT_CHECK_CPPLIB], [
+     [
+       AC_MSG_RESULT([yes])
++      LIBS=$SAVED_LIBS
+       $4
+     ], [
        AC_MSG_RESULT([no])
++      LIBS=$SAVED_LIBS
      ]
  )
 -  LDFLAGS=$SAVED_LDFLAGS
-+  LIBS=$SAVED_LIBS
  ])
  
  AC_CHECK_LIB(m, cosf, , AC_MSG_ERROR([can not find m library]))

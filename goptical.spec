@@ -1,4 +1,3 @@
-# TODO: plplot (renderer)
 #
 # Conditional build:
 %bcond_without	static_libs	# static libraries
@@ -15,7 +14,7 @@ Source0:	https://ftp.gnu.org/gnu/goptical/%{name}-%{version}.tar.gz
 Patch0:		%{name}-includes.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-as-needed.patch
-Patch3:		%{name}-link.patch
+Patch3:		%{name}-plplot.patch
 URL:		http://gnu.org/software/goptical/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
@@ -27,6 +26,8 @@ BuildRequires:	gd-devel
 BuildRequires:	gsl-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	plplot-devel
+BuildRequires:	plplot-c++-devel
 BuildRequires:	rpmbuild(macros) >= 1.749
 BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -57,9 +58,15 @@ Summary:	Header files for Goptical libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Goptical
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	OpenGL-GLU-devel
+Requires:	OpenGL-devel
+Requires:	OpenGL-glut-devel
+Requires:	dime-devel >= 0.9.1-6
 Requires:	gd-devel
 Requires:	gsl-devel
 Requires:	libstdc++-devel
+Requires:	plplot-devel
+Requires:	plplot-c++-devel
 Requires:	xorg-lib-libX11-devel
 
 %description devel
